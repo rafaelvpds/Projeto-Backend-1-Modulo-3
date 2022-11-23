@@ -26,5 +26,5 @@ const ReviewsSchema = new Schema({
     }
 })
 
-export type Reviews = InferSchemaType<typeof ReviewsSchema>
-export const ReviewsModel: Model<Reviews> = model('Reviews', ReviewsSchema)
+export type Review = InferSchemaType<typeof ReviewsSchema>
+export const ReviewsModel: Model<Review> = model('Reviews', ReviewsSchema)
