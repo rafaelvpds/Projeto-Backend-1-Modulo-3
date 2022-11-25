@@ -12,10 +12,6 @@ const ReviewsSchema = new Schema({
         maxlenght: 200,
         required: true,
     }],
-    createDate: {
-        type: Date,
-        required: true
-    },
     updateDate: [{
         type: Date,
         required: true,
@@ -24,7 +20,10 @@ const ReviewsSchema = new Schema({
         type: Number,
         required: true,
     }
-})
+},
+    {
+        timestamps: { createdAt: true }
+    })
 
 export type Review = InferSchemaType<typeof ReviewsSchema>
 export const ReviewsModel: Model<Review> = model('Reviews', ReviewsSchema)

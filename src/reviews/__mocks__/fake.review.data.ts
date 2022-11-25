@@ -7,24 +7,24 @@ export const fakeReviewData: Review[] =
         {
             title: "Harry Potter Camera Secreta",
             review: ["dasdasdasdasdas", "adsadasdadadad", "sadasdasdasda"],
-            createDate: mockDate,
+
             updateDate: [mockDate],
             note: 5
         },
         {
             title: "Harry Potter e a Pedra Filosofal",
             review: ["dasdasdasdasdas", "adsadasdadadad", "sadasdasdasda"],
-            createDate: mockDate,
+
             updateDate: [mockDate],
             note: 4
         }
 
     ]
 
-    export const updateReview: Review ={
-        title: "As Cronicas de Narnia",
-        review: ["dasdasdasdasdas", "adsadasdadadad", "sadasdasdasda"],
-        createDate: mockDate,
-        updateDate: [mockDate],
-        note: 1
-    }
+export const updateReview: Review = {
+    title: "As Cronicas de Narnia",
+    review: ["dasdasdasdasdas", "adsadasdadadad", "sadasdasdasda"],
+
+    updateDate: [mockDate],
+    note: 1
+}
