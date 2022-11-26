@@ -45,8 +45,6 @@ describe("ReviewService", () => {
             const error = await reviewService.getById(fakeId)
             expect(error).toEqual("unable to request the Database")
         })
-
-
     })
     describe("create", () => {
         it("should call Repository.create", async () => {
