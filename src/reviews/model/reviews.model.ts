@@ -12,7 +12,7 @@ const ReviewsSchema = new Schema({
         maxlenght: 200,
         required: true,
     }],
-    updateDate: [{
+    updateAt: [{
         type: Date,
         required: true,
     }],
