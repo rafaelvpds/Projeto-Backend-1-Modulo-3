@@ -14,7 +14,6 @@ export class ReviewSrevice {
             return "unable to request the Database"
         }
     }
-
     async getById(id: string): Promise<Review | InvalidIdError | string> {
         try {
             if (!isValidad(id)) {
@@ -26,8 +25,6 @@ export class ReviewSrevice {
             return "unable to request the Database"
         }
     }
-
-
     async create(review: Review): Promise<Review | string> {
         try {
             const newReview = await this.reviewRepository.create(review)
@@ -41,7 +38,6 @@ export class ReviewSrevice {
         if (!isValidad(id)) {
             return invalidIdError(id)
         }
-         
         try {
             const updateReview = await this.reviewRepository.update(id, review)
             return updateReview
