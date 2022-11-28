@@ -6,24 +6,24 @@ import { jest } from "@jest/globals"
 const reviewRepository = new ReviewsRepository(fakeReviewModel);
 
 describe("ReviewRepository", () => {
-    describe("getAll", () => {
-        it("should return a list of reviews", async () => {
-            const reviews = await reviewRepository.getAll()
-            expect(reviews).toEqual(fakeReviewData)
-        })
-    })
+    it("should return a list of reviews", async () => {
+        const pets = await reviewRepository.getAll();
+        expect(pets).toEqual(fakeReviewData);
+    });
     it("should return an empty array", async () => {
-        jest.spyOn(fakeReviewModel, "find").mockResolvedValueOnce([])
-    })
-
+        jest.spyOn(fakeReviewModel, "find").mockResolvedValueOnce([]);
+        const pets = await reviewRepository.getAll();
+        expect(pets).toEqual([]);
+    });
     describe("getById", () => {
         it("should return a review", async () => {
             const review = await reviewRepository.getById(fakeId)
             expect(review).toEqual(fakeReviewData[0])
         })
-
         it("should return an empty object", async () => {
             jest.spyOn(fakeReviewModel, "findById").mockResolvedValueOnce(null)
+            const review = await reviewRepository.getById(fakeId)
+            expect(review).toEqual({})
         })
     })
     describe("create", () => {

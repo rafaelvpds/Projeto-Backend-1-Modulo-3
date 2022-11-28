@@ -43,8 +43,6 @@ export class ReviewSrevice {
         }
          
         try {
-
-            
             const updateReview = await this.reviewRepository.update(id, review)
             return updateReview
         } catch (error) {

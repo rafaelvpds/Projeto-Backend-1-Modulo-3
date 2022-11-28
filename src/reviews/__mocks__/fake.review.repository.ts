@@ -1,5 +1,5 @@
-import { fakeReviewData, fakeId, updateReview } from "./fake.review.data"
-import { ReviewsRepository } from "../repository/reviews.repository"
+import { fakeReviewData, fakeId, updateReview } from "./fake.review.data";
+import { ReviewsRepository } from "../repository/reviews.repository";
 
 export const fakeReviewRepository = {
     getAll: () => Promise.resolve(fakeReviewData),
