@@ -5,13 +5,13 @@ const mockDate = new Date()
 export const fakeReviewData: Review[] =
     [
         {
-            title: "Harry Potter Camera Secreta",
+            title: "Harry PottSecreta",
             review: ["dasdasdasdasdas", "adsadasdadadad", "sadasdasdasda"],
             updateAt: [mockDate],
             note: 5
         },
         {
-            title: "Harry Potter e a Pedra Filosofal",
+            title: "Harry PottFilosofal",
             review: ["dasdasdasdasdas", "adsadasdadadad", "sadasdasdasda"],
             updateAt: [mockDate],
             note: 4

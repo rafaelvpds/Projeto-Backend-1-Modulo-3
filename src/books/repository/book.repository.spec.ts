@@ -4,18 +4,18 @@ import { BookRepository } from "./book.repository";
 
 const bookRepositary = new BookRepository(fakeBookModel)
 describe("BookRepositary", () => {
-    describe("getAll", () => {
-        it("should return a list of reviews", async () => {
-            const books = await bookRepositary.getAll()
-        })
-    })
-    describe("getById", () => {
+    // describe("getAll", () => {
+    //     it("should return a list of reviews", async () => {
+    //         const books = await bookRepositary.getAll()
+    //     })
+    // })
+    // describe("getById", () => {
 
-    })
+    // })
     describe("getByAuthor", () => {
         it("should return a boocks with Author", async () => {
-            const book = await bookRepositary.getByAuthor(fakeAuthor);
-            expect(book).toEqual(fakeBookData);
+            const author = await bookRepositary.getByAuthor(fakeAuthor);
+            expect(author).toEqual(fakeBookData[0]);
         })
         it("should return an empty object", async () => {
             jest.spyOn(fakeBookModel, "find").mockResolvedValueOnce([]);
@@ -40,29 +40,6 @@ describe("BookRepositary", () => {
             const book = await bookRepositary.update(fakeId, fakeBookData[0]);
             expect(book).toEqual({});
         })
-        describe("updateLanguage", () => {
-            it("update book language", async () => {
 
-                const book = await bookRepositary.updateLanguage(fakeId, fakeBookData[1]);
-                expect(book).toEqual(updateBook);
-            })
-            it("should return an empty object", async () => {
-                jest.spyOn(fakeBookModel, "findByIdAndUpdate").mockResolvedValueOnce({});
-                const book = await bookRepositary.updateLanguage(fakeId, fakeBookData[1]);
-                expect(book).toEqual({});
-            })
-            describe("updateStatus", () => {
-                it("update book language", async () => {
-                    const book = await bookRepositary.updateStatus(fakeId, fakeBookData[1]);
-                    expect(book).toEqual(updateBook);
-                })
-
-                it("should return an empty object", async () => {
-                    jest.spyOn(fakeBookModel, "findByIdAndUpdate").mockResolvedValueOnce({});
-                    const book = await bookRepositary.updateStatus(fakeId, fakeBookData[1]);
-                    expect(book).toEqual({});
-                })
-            })
-        })
     })
 })

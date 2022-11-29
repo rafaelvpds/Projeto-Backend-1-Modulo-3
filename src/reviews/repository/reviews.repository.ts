@@ -10,7 +10,7 @@ export class ReviewsRepository {
     }
     async getById(id: string): Promise<Review> {
         const review = await this.ReviewModel.findById(id)
-        if (review == null) {
+        if (review === null) {
             return {} as Review
         }
         return review
@@ -25,7 +25,7 @@ export class ReviewsRepository {
             new: true
         });
 
-        if (updateReview == null) {
+        if (updateReview === null) {
             return {} as Review
         }
         return updateReview

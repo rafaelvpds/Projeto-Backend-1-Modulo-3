@@ -1,11 +1,16 @@
 import { Model } from "mongoose";
 import { Book } from "../model/book.model";
-import {Review} from "../../reviews/model/reviews.model"
+import { Review } from "../../reviews/model/reviews.model"
 import { updateBook, fakeBookData } from "./fake.book.data";
-import { fakeReviewData }from "../../reviews/__mocks__/fake.review.data"
+import { fakeReviewData } from "../../reviews/__mocks__/fake.review.data"
 
 export const fakeBookModel = {
-    find: () => Promise.resolve(fakeBookData),
+    find: (param) => {
+        if (param) {
+            return Promise.resolve(fakeBookData[0]);
+        }
+        return Promise.resolve(fakeBookData);
+    },
     findById: () => Promise.resolve(fakeBookData[0]),
     create: () => Promise.resolve(fakeBookData[1]),
     findByIdAndUpdate: () => Promise.resolve(updateBook)

@@ -1,3 +1,4 @@
+import { Types } from "mongoose";
 import { Book } from "../model/book.model"
 
 export const fakeId = "632130d41623c49bf7b1c7e9";
@@ -11,7 +12,7 @@ export const fakeBookData: Book[] =
             language: ["ingles, Portugues, Espanhol"],
             statusBooks: true,
             author: "J.K.Rowling",
-           
+
 
         },
         {
@@ -33,27 +34,19 @@ export const fakeBookData: Book[] =
             language: ["Alemao, Portugues, Espanhol"],
             statusBooks: true,
             author: "J.R.R.Tolkien",
-            // review:[{
-            //     _id:"632130d41623c49bf7b1c7e9",
-            //     title: "Harry Potter e a Pedra Filosofal",
-            //     review: ["dasdasdasdasdas", "adsadasdadadad", "sadasdasdasda"],
-            //     updateAt: [mockDate],
-            //     note: 4
-            // }]
-            
-        }, 
-
-
-    ]
-/**
- *  review:[{
-                _id:"632130d41623c49bf7b1c7e9",
+            review: [{
+                _id: new Types.ObjectId("632130d41623c49bf7b1c7e9"),
                 title: "Harry Potter e a Pedra Filosofal",
                 review: ["dasdasdasdasdas", "adsadasdadadad", "sadasdasdasda"],
                 updateAt: [mockDate],
                 note: 4
-            }]
- */
+            }] as unknown as Types.ObjectId | undefined
+
+        },
+
+
+    ]
+
 export const updateBook: Book = {
 
     title: "As Cronicas de Narnia",
@@ -63,15 +56,4 @@ export const updateBook: Book = {
 
 
 }
-// export const updateLanguaeBook: Book = {
-
-//     title: "O Senhor dos Anéis",
-//     language: ["Arabe, Portugues, Espanhol"],
-//     statusBooks: true,
-//     author: "J.R.R.Tolkien",
-
-
-// }
-
-
 

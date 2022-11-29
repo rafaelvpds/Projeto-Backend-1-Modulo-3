@@ -1,5 +1,5 @@
-import { Types } from "mongoose"
+import { Types } from "mongoose";
 
-export function isValidad(id: string): boolean {
-    return Types.ObjectId.isValid(id)
+export function isIdValid(id: string): boolean {
+    return Types.ObjectId.isValid(id);
 }

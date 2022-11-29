@@ -1,91 +1,73 @@
 import { Book } from "../model/book.model";
 import { BookRepository } from "../repository/book.repository";
-import { isValidad } from "../../utils/id.validator";
-import { invalidIdError, InvalidIdError } from "../../utils/error.handler";
+import { isIdValid } from "../../utils/id.validator";
+import { CustomErrors, invalidIdError, InvalidIdError, promiseError, authorInvalidError, AuthorInvalidError } from "../../utils/error.handler";
 
 export class BookService {
     constructor(private readonly bookRepositary: BookRepository) { };
 
-    async getAll(): Promise<Book[] | string> {
+    async getAll(): Promise<Book[] | CustomErrors> {
         try {
             const books = await this.bookRepositary.getAll();
             return books;
         } catch (error) {
-            return "unable to request the Database";
+            return promiseError(error);
         }
     }
-    async getAuthor(author: string): Promise<Book[] | string> {
+    async getById(id: string): Promise<Book | InvalidIdError | CustomErrors> {
         try {
-            const books = await this.bookRepositary.getByAuthor(author);
-            if (books == null) {
-                return "Author not exist";
-            }
-            return books;
-        } catch (error) {
-            return "unable to request the Database";
-        }
-    }
-    async getById(id: string): Promise<Book | InvalidIdError | string> {
-        try {
-            if (!isValidad(id)) {
+            if (!isIdValid(id)) {
                 return invalidIdError(id);
             }
             const review = await this.bookRepositary.getById(id);
             return review;
         } catch (error) {
-            return "unable to request the Database";
+            return promiseError(error);
         }
     }
-    async create(book: Book): Promise<Book | string> {
+    async getByAuthor(author: string): Promise<Book[] | AuthorInvalidError | CustomErrors | CustomErrors> {
+        try {
+            const books = await this.bookRepositary.getByAuthor(author);
+            if (books === null) {
+                return authorInvalidError(author);
+            }
+            return books;
+        } catch (error) {
+            return promiseError(error);
+        }
+    }
+    async create(book: Book): Promise<Book | CustomErrors> {
         try {
             const newBook = await this.bookRepositary.create(book);
             return newBook;
         } catch (error) {
-            return "unable to request the Database";
+            return promiseError(error)
         }
     }
-    async update(id: string, book: Book): Promise<Book | InvalidIdError | string> {
+    async update(id: string, book: Book): Promise<Book | InvalidIdError | CustomErrors> {
         try {
             const updateBook = await this.bookRepositary.update(id, book);
-            if (!isValidad(id)) {
+            if (!isIdValid(id)) {
                 return invalidIdError(id);
             }
             return updateBook
         } catch (error) {
-            return "unable to request the Database"
+            return promiseError(error)
         }
     }
-
-    async updateStatus(id: string, book: Book): Promise<Book | InvalidIdError | string> {
+    async updateStatus(id: string, book: Book): Promise<Book | InvalidIdError | CustomErrors> {
         const { statusBooks } = book
         try {
             const updateStatusBook = await this.bookRepositary.updateStatus(id, {
                 ...book,
                 statusBooks,
             });
-            if (!isValidad(id)) {
+            if (!isIdValid(id)) {
                 return invalidIdError(id);
             }
             return updateStatusBook
         } catch (error) {
-            return "unable to request the Database"
-        }
-    }
-
-    async updateLanguage(id: string, book: Book): Promise<Book | InvalidIdError | string> {
-        try {
-            const { language } = book
-
-            const updateLanguageBook = await this.bookRepositary.updateLanguage(id, {
-                ...book,
-                language
-            })
-            if (!isValidad(id)) {
-                return invalidIdError(id);
-            }
-            return updateLanguageBook
-        } catch (error) {
-            return "unable to request the Database"
+            return promiseError(error)
         }
     }
 }
