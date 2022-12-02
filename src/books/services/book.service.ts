@@ -11,6 +11,7 @@ export class BookService {
             const books = await this.bookRepositary.getAll();
             return books;
         } catch (error) {
+            console.log(error)
             return promiseError(error);
         }
     }

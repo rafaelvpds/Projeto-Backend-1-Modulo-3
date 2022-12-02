@@ -56,10 +56,8 @@ describe("Book Service", () => {
             await bookService.getByAuthor(fakeAuthor);
             expect(spy).toHaveBeenCalled();
         })
-
         it("should return a list of books with their author", async () => {
             const book = await bookService.getByAuthor(fakeAuthor);
-            console.log(book);
             expect(book).toEqual(fakeBookData[0]);
         })
         it("should return a Error", async () => {
@@ -71,7 +69,6 @@ describe("Book Service", () => {
                     error: "Error",
                 },
             });
-
         })
     })
     describe("create", () => {

@@ -20,15 +20,11 @@ describe("ReviewController", () => {
             expect(res.status).toHaveBeenCalledWith(StatusCode.OK);
         });
         it("should return a promiseError", async () => {
-            jest
-                .spyOn(fakeReviewService, "getAll")
-                .mockImplementation(() => Promise.resolve(promiseError("error")));
-
+            jest.spyOn(fakeReviewService, "getAll").mockImplementation(() => Promise.resolve(promiseError("error")));
             await reviewController.getAll(req, res);
             expect(res.status).toHaveBeenCalledWith(StatusCode.INTERNAL_SERVER_ERROR);
         });
     });
-
     describe("getById", () => {
         it("should return a review", async () => {
             req.params.id = fakeId;
@@ -42,17 +38,12 @@ describe("ReviewController", () => {
         });
         it("should return a promiseError", async () => {
             req.params.id = fakeId;
-            jest
-                .spyOn(fakeReviewService, "getById")
-                .mockImplementation(() => Promise.resolve(promiseError("error")));
-
+            jest.spyOn(fakeReviewService, "getById").mockImplementation(() => Promise.resolve(promiseError("error")));
             await reviewController.getById(req, res);
             expect(res.status).toHaveBeenCalledWith(StatusCode.INTERNAL_SERVER_ERROR);
         });
         it("should return a invalidIdError", async () => {
-            jest
-                .spyOn(fakeReviewService, "getById")
-                .mockImplementation(() => Promise.resolve(invalidIdError("id")));
+            jest.spyOn(fakeReviewService, "getById").mockImplementation(() => Promise.resolve(invalidIdError("id")));
             await reviewController.getById(req, res);
             expect(res.status).toHaveBeenCalledWith(StatusCode.BAD_REQUEST);
         });
@@ -89,9 +80,7 @@ describe("ReviewController", () => {
             expect(res.status).toHaveBeenCalledWith(StatusCode.OK)
         })
         it("should return a invalidIdError", async () => {
-            jest
-                .spyOn(fakeReviewService, "getById")
-                .mockImplementation(() => Promise.resolve(invalidIdError("id")));
+            jest.spyOn(fakeReviewService, "update").mockImplementation(() => Promise.resolve(invalidIdError("id")));
             await reviewController.getById(req, res);
             expect(res.status).toHaveBeenCalledWith(StatusCode.BAD_REQUEST);
         });

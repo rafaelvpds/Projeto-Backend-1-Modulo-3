@@ -55,4 +55,4 @@ export function invalidBodyError(body: unknown): InvalidBodyError {
         },
     };
 }
-export type CustomErrors = PromiseError | InvalidIdError;
+export type CustomErrors = PromiseError | InvalidIdError | AuthorInvalidError;

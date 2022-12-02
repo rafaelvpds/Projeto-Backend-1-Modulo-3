@@ -2,12 +2,23 @@ import { BookService } from "../services/book.service";
 import { StatusCode } from "../../utils/status.cade";
 import { Response, Request } from "express";
 import { invalidBody } from "../utils/book.body.validator";
-import { invalidBodyError } from "../../utils/error.handler";
+import { authorInvalidError, invalidBodyError } from "../../utils/error.handler";
 
 export class BookController {
     constructor(private readonly bookService: BookService) { };
 
     async getAll(req: Request, res: Response) {
+        const { author } = req.query
+
+        if (author) {
+            const result = await this.bookService.getByAuthor(author as string);
+
+            if ("authorInvalidError" in result) {
+                return res.status(StatusCode.NOT_FOUND).json(authorInvalidError(req.body))
+            }
+            return res.status(StatusCode.OK).json(result)
+        }
+
         const result = await this.bookService.getAll();
         if ("promiseError" in result) {
             return res.status(StatusCode.INTERNAL_SERVER_ERROR).json(result);
@@ -27,15 +38,6 @@ export class BookController {
             return res.status(StatusCode.INTERNAL_SERVER_ERROR).json(result);
         }
         return res.status(StatusCode.OK).json(result);
-    }
-    async getByAuthor(req: Request, res: Response) {
-
-        const { author } = req.params;
-        const result = await this.bookService.getByAuthor(author);
-        if ("authorInvalidError" in result) {
-            return res.status(StatusCode.NOT_FOUND).json(result);
-        }
-        return res.status(StatusCode.OK).json(result)
     }
     async create(req: Request, res: Response) {
         if (invalidBody(req)) {

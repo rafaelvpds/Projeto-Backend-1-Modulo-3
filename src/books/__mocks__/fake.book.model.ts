@@ -4,6 +4,21 @@ import { Review } from "../../reviews/model/reviews.model"
 import { updateBook, fakeBookData } from "./fake.book.data";
 import { fakeReviewData } from "../../reviews/__mocks__/fake.review.data"
 
+export const fakeBookModelPopulate = {
+    find: () => {
+        return {
+            populate: (params: string) => Promise.resolve(fakeBookData)
+
+        }
+    },
+    findById: () => {
+        return {
+            populate: (params: string) => Promise.resolve(fakeBookData)
+
+        }
+    }
+} as unknown as Model<Book, Review>
+
 export const fakeBookModel = {
     find: (param) => {
         if (param) {

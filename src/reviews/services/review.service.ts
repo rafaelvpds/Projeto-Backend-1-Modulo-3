@@ -26,8 +26,10 @@ export class ReviewSrevice {
         }
     }
     async create(review: Review): Promise<Review | CustomErrors> {
+
         try {
-            const newReview = await this.reviewRepository.create(review)
+            const formattedReview = { ...review, updatedAt: [new Date()] }
+            const newReview = await this.reviewRepository.create(formattedReview)
             return newReview
         } catch (error) {
             return promiseError(error)

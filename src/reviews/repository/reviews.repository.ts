@@ -20,14 +20,23 @@ export class ReviewsRepository {
         return newReview
     }
 
-    async update(id: string, review: Review): Promise<Review> {
-        const updateReview = await this.ReviewModel.findByIdAndUpdate(id, review, {
-            new: true
-        });
-
+    async update(id: string, reviews: Review): Promise<Review> {
+        const updateReview = await this.ReviewModel.findByIdAndUpdate(id, {
+            title: reviews.title,
+            $push: {
+                review: reviews.review,
+                updatedAt: new Date(),
+            },
+            note: reviews.note
+        },
+            {
+                new: true
+            });
         if (updateReview === null) {
             return {} as Review
         }
+        console.log(updateReview)
         return updateReview
+
     }
 }

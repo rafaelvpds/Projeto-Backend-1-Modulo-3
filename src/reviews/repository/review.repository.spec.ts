@@ -7,13 +7,13 @@ const reviewRepository = new ReviewsRepository(fakeReviewModel);
 
 describe("ReviewRepository", () => {
     it("should return a list of reviews", async () => {
-        const pets = await reviewRepository.getAll();
-        expect(pets).toEqual(fakeReviewData);
+        const reviews = await reviewRepository.getAll();
+        expect(reviews).toEqual(fakeReviewData);
     });
     it("should return an empty array", async () => {
         jest.spyOn(fakeReviewModel, "find").mockResolvedValueOnce([]);
-        const pets = await reviewRepository.getAll();
-        expect(pets).toEqual([]);
+        const reviews = await reviewRepository.getAll();
+        expect(reviews).toEqual([]);
     });
     describe("getById", () => {
         it("should return a review", async () => {

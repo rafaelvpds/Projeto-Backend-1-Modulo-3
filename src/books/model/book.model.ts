@@ -10,11 +10,11 @@ const bookSchema = new Schema({
         required: true,
     },
 
-    language: [{
-        type: String,
+    language: {
+        type: [String],
         maxlength: 18,
         required: true
-    }],
+    },
     statusBooks: {
         type: Boolean,
         required: true
