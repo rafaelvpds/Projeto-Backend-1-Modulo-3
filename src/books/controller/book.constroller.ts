@@ -72,17 +72,19 @@ export class BookController {
     }
 
     async updateStatus(req: Request, res: Response) {
-        if (invalidBody(req)) {
-            res.status(StatusCode.BAD_REQUEST).json(invalidBodyError(req.body));
-            return;
-        }
         const { id } = req.params;
         const { body } = req;
 
         const result = await this.bookService.updateStatus(id, body);
+
+        if (invalidBody(req)) {
+            return res.status(StatusCode.BAD_REQUEST).json(invalidBodyError(req.body));
+        }
+
         if ("promiseError" in result) {
             return res.status(StatusCode.INTERNAL_SERVER_ERROR).json(result);
         }
+        
         if ("invalidIdError" in result) {
             return res.status(StatusCode.BAD_REQUEST).json(result);
         }

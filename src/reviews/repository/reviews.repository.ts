@@ -1,6 +1,5 @@
 import { Review, ReviewsModel } from '../model/reviews.model'
 import { Model } from 'mongoose'
-
 export class ReviewsRepository {
     constructor(private readonly ReviewModel: Model<Review>) { }
 
@@ -19,24 +18,20 @@ export class ReviewsRepository {
         const newReview = await this.ReviewModel.create(review)
         return newReview
     }
-
     async update(id: string, reviews: Review): Promise<Review> {
+
         const updateReview = await this.ReviewModel.findByIdAndUpdate(id, {
-            title: reviews.title,
             $push: {
                 review: reviews.review,
                 updatedAt: new Date(),
             },
-            note: reviews.note
-        },
-            {
-                new: true
-            });
+        }, {
+            new: true
+        });
         if (updateReview === null) {
             return {} as Review
         }
-        console.log(updateReview)
-        return updateReview
 
+        return updateReview
     }
 }

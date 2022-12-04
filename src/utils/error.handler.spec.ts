@@ -63,3 +63,26 @@ describe("error.handler", () => {
     })
 });
 
+describe("authorInvalidError", () => {
+    it("should be defined", () => {
+        const error = authorInvalidError("invalidAuthor");
+        expect(error).toBeDefined();
+    });
+    it("should return an object with a authorInvalidError property", () => {
+        const error = authorInvalidError("invalidAuthor");
+        expect(error.invalidAuthorError).toBeDefined();
+    });
+
+    it("should return an object with a authorInvalidError property with a message property", () => {
+        const error = authorInvalidError("invalidAuthor");
+        expect(error).toEqual({
+            invalidAuthorError: {
+                message: "the author does not exist",
+                author: "invalidAuthor"
+
+            }
+        });
+    });
+
+})
+

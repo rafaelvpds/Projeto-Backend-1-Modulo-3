@@ -9,4 +9,5 @@ reviewBooks.get("/", book.getAll.bind(book));
 reviewBooks.get("/:id", book.getById.bind(book));
 reviewBooks.post("/", book.create.bind(book));
 reviewBooks.put("/:id", book.update.bind(book));
+reviewBooks.put("/:id/status", book.updateStatus.bind(book))
 

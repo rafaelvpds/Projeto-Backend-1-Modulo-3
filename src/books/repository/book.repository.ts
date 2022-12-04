@@ -32,16 +32,17 @@ export class BookRepository {
     }
 
     async update(id: string, book: Book): Promise<Book> {
-        const { language, review } = book
-        const updateBook = await this.bookModel.findByIdAndUpdate(id, { $set: { language, review } }, { new: true });
+
+        const updateBook = await this.bookModel.findByIdAndUpdate(id, { $set: { language: book.language, review: book.review } }, { new: true });
         if (updateBook === null) {
             return {} as Book;
         }
         return updateBook;
     }
+
     async updateStatus(id: string, book: Book): Promise<Book> {
-        const { statusBooks } = book;
-        const updateStatusBook = await this.bookModel.findByIdAndUpdate(id, { $set: { statusBooks } }, { new: true });
+
+        const updateStatusBook = await this.bookModel.findByIdAndUpdate(id, { $set: { statusBooks: book.statusBooks } }, { new: true });
         if (updateStatusBook === null) {
             return {} as Book;
         }

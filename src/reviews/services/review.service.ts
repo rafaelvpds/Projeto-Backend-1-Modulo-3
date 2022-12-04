@@ -29,6 +29,7 @@ export class ReviewSrevice {
 
         try {
             const formattedReview = { ...review, updatedAt: [new Date()] }
+            
             const newReview = await this.reviewRepository.create(formattedReview)
             return newReview
         } catch (error) {

@@ -57,12 +57,9 @@ export class BookService {
         }
     }
     async updateStatus(id: string, book: Book): Promise<Book | InvalidIdError | CustomErrors> {
-        const { statusBooks } = book
+
         try {
-            const updateStatusBook = await this.bookRepositary.updateStatus(id, {
-                ...book,
-                statusBooks,
-            });
+            const updateStatusBook = await this.bookRepositary.updateStatus(id, book);
             if (!isIdValid(id)) {
                 return invalidIdError(id);
             }
