@@ -1,7 +1,7 @@
 import { fakeAuthor, fakeBookData, fakeId, updateBook } from "../__mocks__/fake.book.data";
 import { fakeBookRepositary } from "../__mocks__/fake.book.repository";
 import { fakeBookModel } from "../__mocks__/fake.book.model";
-import { BookService } from "../services/book.service";
+import { BookService } from "./book.service";
 import { InvalidIdError, invalidIdError } from "../../utils/error.handler";
 import { jest, describe, it, expect } from "@jest/globals";
 

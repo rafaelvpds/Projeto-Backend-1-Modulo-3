@@ -30,17 +30,17 @@ describe("BookRepositary", () => {
     //         })
     //     })
     // })
-    describe("getByAuthor", () => {
-        it("should return a boocks with Author", async () => {
-            const author = await bookRepositary.getByAuthor(fakeAuthor);
-            expect(author).toEqual(fakeBookData[0]);
-        })
-        it("should return an empty object", async () => {
-            jest.spyOn(fakeBookModel, "find").mockResolvedValueOnce([]);
-            const author = await bookRepositary.getByAuthor(fakeAuthor);
-            expect(author).toEqual([]);
-        })
-    })
+    // describe("getByAuthor", () => {
+    //     it("should return a boocks with Author", async () => {
+    //         const author = await bookRepositary.getByAuthor(fakeAuthor);
+    //         expect(author).toEqual(fakeBookData[0]);
+    //     })
+    //     it("should return an empty object", async () => {
+    //         jest.spyOn(fakeBookModel, "find").mockResolvedValueOnce([]);
+    //         const author = await bookRepositary.getByAuthor(fakeAuthor);
+    //         expect(author).toEqual([]);
+    //     })
+    // })
     describe("create", () => {
         it("should create a book", async () => {
             const newBook = await bookRepositary.create(fakeBookData[1]);

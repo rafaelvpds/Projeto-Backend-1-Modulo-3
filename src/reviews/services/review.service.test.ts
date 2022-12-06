@@ -1,6 +1,6 @@
 import { fakeReviewData, fakeId, updateReview } from "../__mocks__/fake.review.data";
 import { fakeReviewRepository } from "../__mocks__/fake.review.repository"
-import { ReviewSrevice } from "../services/review.service";
+import { ReviewSrevice } from "./review.service";
 import { jest } from "@jest/globals";
 
 const reviewService = new ReviewSrevice(fakeReviewRepository);

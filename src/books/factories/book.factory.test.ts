@@ -1,4 +1,4 @@
-import { bookFactory } from "../factories/book.factory";
+import { bookFactory } from "./book.factory";
 
 describe("UserFactory", () => {
     it("should create the user Domain", () => {

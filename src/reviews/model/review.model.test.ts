@@ -1,4 +1,4 @@
-import {ReviewsModel} from "../model/reviews.model"
+import {ReviewsModel} from "./reviews.model"
 
 describe("ReviewModel",()=>{
     it("should be defined", ()=>{

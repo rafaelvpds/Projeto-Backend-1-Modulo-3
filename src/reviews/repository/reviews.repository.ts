@@ -31,7 +31,6 @@ export class ReviewsRepository {
         if (updateReview === null) {
             return {} as Review
         }
-
         return updateReview
     }
 }
