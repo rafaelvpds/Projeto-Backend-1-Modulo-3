@@ -10,7 +10,7 @@ const req = mockRequest()
 const res = mockResponse()
 
 describe("BookControler", () => {
-    describe("getAll and getAuthor", () => {
+    describe("getAll", () => {
         it("should return all books", async () => {
             await bookController.getAll(req, res);
             expect(res.json).toHaveBeenCalledWith(fakeBookData);
@@ -24,24 +24,18 @@ describe("BookControler", () => {
             await bookController.getAll(req, res);
             expect(res.status).toHaveBeenCalledWith(StatusCode.INTERNAL_SERVER_ERROR);
         });
+    })
+    describe("getByAuthor", () => {
         it("should return a boocks with Author", async () => {
-            req.params.author = fakeAuthor
+            req.query.author = fakeAuthor
             await bookController.getAll(req, res);
             expect(res.json).toHaveBeenCalledWith(fakeBookData);
         });
-
-        // it("should return status code 200", async () => {
-        //     req.params.author = fakeAuthor
-        //     await bookController.getAll(req, res);
-        //     expect(res.status).toHaveBeenCalledWith(StatusCode.OK);
-        // });
-        // it("should return a Error", async () => {
-        //     req.params.author = fakeAuthor;
-        //     jest.spyOn(fakeBookService, "getByAuthor").mockRejectedValueOnce(authorInvalidError("error"));
-        //     await bookController.getAll(req, res);
-        //     expect(res.status).toHaveBeenCalledWith(StatusCode.NOT_FOUND);
-        //     console.log(res.status)
-        // });
+        it("should return status code 200", async () => {
+            req.query.author = fakeAuthor
+            await bookController.getAll(req, res);
+            expect(res.status).toHaveBeenCalledWith(StatusCode.OK);
+        });
     });
     describe("getById", () => {
         it("should return a book", async () => {

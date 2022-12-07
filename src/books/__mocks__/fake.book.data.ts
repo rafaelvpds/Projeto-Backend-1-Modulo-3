@@ -12,6 +12,13 @@ export const fakeBookData: Book[] =
             language: ["ingles, Portugues, Espanhol"],
             statusBooks: true,
             author: "J.K.Rowling",
+            review: [{
+                _id: new Types.ObjectId("632130d41623c49bf7b1c7e9"),
+                title: "Harry Potter e a Pedra Filosofal",
+                review: ["dasdasdasdasdas", "adsadasdadadad", "sadasdasdasda"],
+                updateAt: [mockDate],
+                note: 4
+            }] as unknown as Types.ObjectId | undefined
 
 
         },
@@ -20,12 +27,26 @@ export const fakeBookData: Book[] =
             language: ["Alemao, Portugues, Espanhol"],
             statusBooks: true,
             author: "J.R.R.Tolkien",
+            review: [{
+                _id: new Types.ObjectId("632130d41623c49bf7b1c7e9"),
+                title: "Harry Potter e a Pedra Filosofal",
+                review: ["dasdasdasdasdas", "adsadasdadadad", "sadasdasdasda"],
+                updateAt: [mockDate],
+                note: 4
+            }] as unknown as Types.ObjectId | undefined
         },
         {
             title: "O Senhor dos Anéis",
             language: ["Alemao, Portugues, Espanhol"],
             statusBooks: true,
             author: "J.R.R.Tolkien",
+            review: [{
+                _id: new Types.ObjectId("632130d41623c49bf7b1c7e9"),
+                title: "Harry Potter e a Pedra Filosofal",
+                review: ["dasdasdasdasdas", "adsadasdadadad", "sadasdasdasda"],
+                updateAt: [mockDate],
+                note: 4
+            }] as unknown as Types.ObjectId | undefined
         },
 
 

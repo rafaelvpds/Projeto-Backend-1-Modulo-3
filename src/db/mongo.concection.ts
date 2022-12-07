@@ -5,7 +5,7 @@ const mongo = process.env.MONGODB as string
 
 export function connectMongo() {
 
-    connection
+    // connection
         // .on('error', (error) => {
         //     console.log('connection error: ' + error)
         // })

@@ -1,13 +1,12 @@
 import express from "express";
 import { book } from "../factories/book.factory";
 
-export const reviewBooks = express.Router();
+export const routesBook = express.Router();
 
 //o bind é encarregado de manter o escopo do this
 
-reviewBooks.get("/", book.getAll.bind(book));
-reviewBooks.get("/:id", book.getById.bind(book));
-reviewBooks.post("/", book.create.bind(book));
-reviewBooks.put("/:id", book.update.bind(book));
-reviewBooks.put("/:id/status", book.updateStatus.bind(book))
-
+routesBook.get("/", book.getAll.bind(book));
+routesBook.get("/:id", book.getById.bind(book));
+routesBook.post("/", book.create.bind(book));
+routesBook.put("/:id", book.update.bind(book));
+routesBook.put("/:id/status", book.updateStatus.bind(book))

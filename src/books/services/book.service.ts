@@ -11,7 +11,7 @@ export class BookService {
             const books = await this.bookRepositary.getAll();
             return books;
         } catch (error) {
-           
+            console.log(error)
             return promiseError(error);
         }
     }
@@ -56,8 +56,9 @@ export class BookService {
             return promiseError(error)
         }
     }
-    async updateStatus(id: string, book: Book): Promise<Book | InvalidIdError | CustomErrors> {
 
+
+    async updateStatus(id: string, book: Book): Promise<Book | InvalidIdError | CustomErrors> {
         try {
             const updateStatusBook = await this.bookRepositary.updateStatus(id, book);
             if (!isIdValid(id)) {
