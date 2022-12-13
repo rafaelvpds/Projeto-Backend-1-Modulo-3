@@ -4,11 +4,11 @@ import { ReviewsModel } from "../model/reviews.model";
 import { ReviewController } from "../controller/review.controller";
 
 export function reviewFactory() {
-    const reviewRepository = new ReviewsRepository(ReviewsModel);
-    const reviewService = new ReviewSrevice(reviewRepository);
-    const reviewController = new ReviewController(reviewService);
+  const reviewRepository = new ReviewsRepository(ReviewsModel);
+  const reviewService = new ReviewSrevice(reviewRepository);
+  const reviewController = new ReviewController(reviewService);
 
-    return reviewController;
+  return reviewController;
 }
 
 export const review = reviewFactory();

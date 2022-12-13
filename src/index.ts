@@ -1,7 +1,7 @@
-import express from 'express'
+import express from "express";
 import { routesReview } from "./reviews/routes/review.routes";
 import { routesBook } from "./books/routes/book.routes";
-import { connectMongo } from './db/mongo.concection';
+import { connectMongo } from "./db/mongo.concection";
 
 connectMongo();
 

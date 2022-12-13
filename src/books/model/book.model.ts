@@ -1,39 +1,36 @@
+import { Schema, model, Model, InferSchemaType } from "mongoose";
 
-import { Schema, model, Model, InferSchemaType } from "mongoose"
-
-
-const bookSchema = new Schema({
+const bookSchema = new Schema(
+  {
     title: {
-        type: String,
-        maxlenght: 24,
-        unique: true,
-        required: true,
+      type: String,
+      maxlenght: 24,
+      unique: true,
+      required: true,
     },
 
     language: {
-        type: [String],
-        maxlength: 18,
-        required: true
+      type: [String],
+      maxlength: 18,
+      required: true,
     },
     statusBooks: {
-        type: Boolean,
-        required: true
+      type: Boolean,
+      required: true,
     },
     author: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     review: {
-        type: Schema.Types.ObjectId,
-        ref: "Review",
-        required: false
-    }
-},
-    {
-        timestamps: { createdAt: true }
-    }
-
-)
-
-export type Book = InferSchemaType<typeof bookSchema>
-export const BookModel: Model<Book> = model("Book", bookSchema)
+      type: Schema.Types.ObjectId,
+      ref: "Review",
+      required: false,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+export type Book = InferSchemaType<typeof bookSchema>;
+export const BookModel: Model<Book> = model("Book", bookSchema);
