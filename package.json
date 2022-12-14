@@ -2,11 +2,12 @@
   "scripts": {
     "start": "ts-node-esm ./src/index.ts",
     "seed": "ts-node-esm ./src/db/mongo.seeder.ts",
-    "test": "jest --detectOpenHandles",
+    "test": "jest --detectOpenHandles --silent",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "coverage": "npx jest --coverage"
+    "coverage": "npx jest --coverage --silent"
   },
   "dependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@types/express": "^4.17.14",
     "@types/jest": "^29.0.2",
     "@types/mongoose": "^5.11.97",

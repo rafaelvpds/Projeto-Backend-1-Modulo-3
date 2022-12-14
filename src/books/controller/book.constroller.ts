@@ -66,7 +66,6 @@ export class BookController {
     const { body } = req;
 
     const result = await this.bookService.update(id, body);
-    console.log(result)
     if ("promiseError" in result) {
       return res.status(StatusCode.INTERNAL_SERVER_ERROR).json(result);
     }

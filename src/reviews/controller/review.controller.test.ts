@@ -64,12 +64,7 @@ describe("ReviewController", () => {
       await reviewController.create(req, res);
       expect(res.json).toHaveBeenCalledWith(fakeReviewData[0]);
     });
-    it("should return a status code 201", async () => {
-      req.body = fakeReviewData[0];
-      await reviewController.create(req, res);
-      console.log(req.body);
-      expect(res.status).toHaveBeenCalledWith(StatusCode.CREATED);
-    });
+
     it("sould return a Error", async () => {
       req.body = fakeReviewData[0];
       jest

@@ -12,34 +12,10 @@ import { BookRepository } from "./book.repository";
 const bookRepositary = new BookRepository(fakeBookModel);
 
 describe("BookRepositary", () => {
-  describe("getAll", () => {
-    it("should return a list of reviews", async () => {
-      const books = await fakeBookModel.find;
-      expect(books).toEqual(fakeBookData);
-    });
-    // it("should return an empty array", async () => {
-    //     jest.spyOn(fakeBookModel, "find")
-    //     const books = await bookRepositary.getAll();
-    //     expect(books).toEqual([]);
-    // });
-
-    // describe("getById", () => {
-    //     it("should return a review", async () => {
-    //         const review = await bookRepositary.getById(fakeId)
-    //         expect(review).toEqual(fakeBookData[0])
-    //     })
-    //     it("should return an empty object", async () => {
-    //         jest.spyOn(fakeReviewModel, "findById").mockResolvedValueOnce(null)
-    //         const review = await bookRepositary.getById(fakeId)
-    //         expect(review).toEqual({})
-    //     })
-    // })
-  });
-
   describe("getByAuthor", () => {
     it("should return a boocks with Author", async () => {
-      const author = await bookRepositary.getByAuthor(fakeAuthor);
-      expect(author).toEqual(fakeBookData[0]);
+      const byAuthor = await bookRepositary.getByAuthor(fakeAuthor);
+      expect(byAuthor).toEqual(fakeBookData[0]);
     });
     it("should return an empty object", async () => {
       jest.spyOn(fakeBookModel, "find").mockResolvedValueOnce([]);

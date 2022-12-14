@@ -4,30 +4,30 @@ import express from "express";
 import supertest from "supertest";
 import { routesReview } from "../reviews/routes/review.routes";
 import { routesBook } from "../books/routes/book.routes";
+import { faker } from "@faker-js/faker";
+
 const app = express();
 app.use(express.json());
 app.use("/teste", routesReview);
 app.use("/testeBook", routesBook);
 
-const testCreate = {
-  title: "Resenha do Livro Harry Potter e a Pedra Filosofal101",
 
-  review:
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-
+const reviewCreate = {
+  title: faker.lorem.words(3),
+  review: faker.lorem.paragraphs(3),
   note: 1,
 };
 const testReviewUpdate = {
   review: [
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
-    "Outro teste",
+    faker.lorem.paragraphs(3),
+    faker.lorem.paragraphs(3),
   ],
 };
 const bookCreate = {
-  title: "Harry Pottyter e a Pedra Filosofal1516",
+  title: faker.lorem.words(3),
   language: ["ingles, Portugues"],
   statusBooks: true,
-  author: "J.K.Rowling",
+  author: faker.name.firstName(),
 };
 
 const testBookUpdate = {
@@ -48,8 +48,7 @@ afterAll(async () => {
 });
 describe("Reviews", () => {
   it("should create review", async () => {
-    const response = await supertest(app).post("/teste").send(testCreate);
-    console.log(response.body);
+    const response = await supertest(app).post("/teste").send(reviewCreate);
     expect(response.status).toBe(201);
   });
   it("should get all reviews", async () => {
@@ -79,13 +78,11 @@ describe("Books", () => {
   });
   it("should get all Books", async () => {
     const response = await supertest(app).get("/testeBook");
-    console.log(response.body);
     expect(response.status).toBe(200);
   });
   it("should get book by author", async () => {
     const author = "J.K.Rowling";
     const response = await supertest(app).get(`/testeBook/?author=${author}`);
-    console.log(response.body);
     expect(response.status).toBe(200);
   });
   it("should get book by id", async () => {
