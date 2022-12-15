@@ -4,14 +4,14 @@ const ReviewsSchema = new Schema(
   {
     title: {
       type: String,
-      maxlenght: 24,
+      maxlength: 24,
       unique: true,
       required: true,
     },
     review: [
       {
         type: String,
-        maxlenght: 200,
+        maxlength: 200,
         required: true,
       },
     ],

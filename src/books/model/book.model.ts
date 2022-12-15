@@ -4,7 +4,7 @@ const bookSchema = new Schema(
   {
     title: {
       type: String,
-      maxlenght: 24,
+      maxlength: 24,
       unique: true,
       required: true,
     },
