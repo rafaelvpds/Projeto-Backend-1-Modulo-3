@@ -88,15 +88,4 @@ npm run coverage
 ### Quantidade de testes realizados e cobertura da aplicação:
 ![Test integration project](https://user-images.githubusercontent.com/33781893/207997403-a2f3909f-0fdd-44ed-8e92-04d75b46d4a9.jpg)
 
-## Como usar os endpoints
-| Endpoint | Input |
-| ------------------------ | --------------------------------------------------------------------------------------------- |
-| GET /                 | Não é necessário input, retornará todas as postagens  |
-| GET /:id         | Necessário indicar id válido nos parâmetros da rota, retorna o post com o id selecionado.             |
-| POST /                  | Necessário informar JSON válido (exemplo: { "title": "sua publicação", "content": "conteúdo dessa publicação"}), retornará a postagem criada. Observação: a chave "content" não é obrigatória para criar postagem.                              |
-| PUT /:id         | Necessário indicar id válido nos parâmetros da rota e qual chave deseja alterar (title, content).             |
-| DELETE /:id         | Necessário indicar id válido nos parâmetros da rota, retorna post excluido.             |
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[coverage-screenshot]: https://i.imgur.com/E2iF52f.png
