@@ -1,201 +1,126 @@
-## NODE EXPRESS TS TEMPLATE
+# Reviews and Books API - NODE EXPRESS TS TEMPLATE
 
-## Qual a função desse Repositório ?
+Esse é o repositório para o back-end da aplicação de books e reviews. Foi criada uma API Rest com Node Express.
 
-1. Esse repositório é um template de API com NodeJs
+## Tecnologias utilizadas
+* Node.js
+* Express
+* Mongoose (mongoDB)
+* TypeScript
 
-## Sumário
+## Estrutura em camada:
+O projeto foi realizado com a arquitetura em camada. Segue explicação da responsabilidade de cada camada do projeto.
 
-[Tecnologias](#tecnologias)
+| Nome | Descrição |
+| ------------------------ | --------------------------------------------------------------------------------------------- |
+| **Model**| É o modelo do banco de dados criado com o ORM/Bbibilioteca |
 
-[Como instalar](#como-instalar)
+| **Repository**| Camada que recebe o Model, é onde fazemos as nossas queries|
 
-[Como utilizar](#como-utilizar)
+| **Serviço**| Camada de regra de negócio, recebe o Repository, é onde fica tratamento da maior partes dos erros.|
 
-[Diretorios](#diretorios)
+| **Controllers**| Camada de entrada, recebe o Service é onde fica Req/Res, status code, erros de body, etc |
 
-[Detalhes](#detalhes)
+| **Routes**| É onde definimos os endpoints e invocamos os controllers |
+## Estrutura do projeto
+A estrutura de pastas do projeto é explicada a seguir:
 
-[Projeto](#projeto)
+| Nome | Descrição |
+| ------------------------ | --------------------------------------------------------------------------------------------- |
+| **node_modules**         | Contém todas as dependências npm |
 
-## Tecnologias
+| **src**       | Contém os diretórios src/db, src/books, src/reviews, src/test  e src/utils |
 
-1. NodeJs
+| **src/db**    | Contém arquivo seeder.ts, para realizar um processo de seeding inicial
 
-2. Mongo (Mongoose)
+| **src/books** | Contém todo o domínio de Posts: com seus respectivos controllers, models, repositories, services, factory e rotas.
 
-3. Jest (Unitários e Integração)
+| **src/books/__mocks__**  | Contém todos os mocks da aplicação, para a realização dos testes.
 
-4. Supertest (Integração)
+| **src/books/controllers** | Contém a classe BookController com os métodos: getAll, getById, create, update e updateStatus. Acompanha arquivo de testes de controller.
 
-5. Express
+| **src/books/factories** | Contém função bookFactory, responsável por instanciar repository, service e controller.    
 
-6. Typescript
+| **src/books/models**      | Contém o Schema para a model de review e cria Model da aplicação.|
 
-7. Babel
+| **src/books/repository**  | . Contém a classe BookRepository: repositório com os métodos getAll, getById, create, update e updateStatus|   
 
-## Como instalar
+| **src/books/routes**  | É onde definimos os endpoints da entidade book|  
 
-1. npm i
+| **src/books/services**     | Contém classe BookService: serviço com os métodos getAll, getById, create, update updateStatus.|
 
-## Como utilizar
+| **src/books/utils** | Contém 1 arquivos: 1. book.body.validator função de validação do body.|
 
-1. npm run start para inicializar a API
+| **src/reviews** | Contém todo o domínio do reviews: com seus respectivos controllers, models, repositories, services, factory e rotas.|
 
-2. npm run test para rodar os testes
+| **src/reviews/__mocks__**  | Contém todos os mocks da aplicação, para a realização dos testes.|
 
-## Diretorios
+| **src/reviews/controllers** | Contém a classe ReviewController com os métodos: getAll, getById, create e update. Acompanha arquivo de testes de controller.|
 
-1. mocks - Aqui temos mocks/stubs para os testes do serviço principal
+| **src/reviews/factories** | Contém função reviewFactory, responsável por instanciar repository, service e controller.    
 
-2. models - Aqui temos o modelo do banco feito com Mongoose
+| **src/reviews/models**      | Contém o Schema para a model de reviews e cria Model da aplicação.|
 
-3. repositories - Aqui foram armazenados códigos de interação com o banco de dados
+| **src/reviews/repository**  | Contém classe ReviewRepository: repositório com os métodos getAll, getById, create e update|         
 
-4. services - Aqui estão as funções principais do script
+| **src/reviews/services**     | Contém classe ReviewService: serviço com os métodos getAll, getById, create e update.
 
-5. controllers - Aqui temos o controle de fluxo e tratamento de erros https
+| **src/reviews/utils** | Contém 1 arquivos: 1. book.body.validator função de validação do body.|
 
-6. routes - Aqui temos as rotas da aplicação
+| **package.json** | Contém todas as dependências instaladas assim como os scripts da aplicação |     
+## Pré-requisitos
+- É esperado que o <a href="https://nodejs.org/en/">Node.js</a> esteja instalado.
+- Na raiz no projeto, crie um arquivo <strong>.env</strong>, adicione sua string de conexão do MongoDB à chave MONGO, como demonstrado a seguir:
+```
+MONGO=<sua-string-de-conexão>
+```
+### Instalação
 
-7. utils - Aqui encontram-se bibiliotecas/helpers
+Instale as dependências:
 
-8. factories - Aqui serão realizadas as instâncias e a DI das classes do core
+```
+npm install
+```
 
-## Projeto
+Rode o script de seed:
 
-1. O Projeto em questão será uma API de duas entidades, com uma pasta especifica para
-   cada entidade.
+```
+npm run seed
+```
 
-2. As entidades devem seguir o conceito de arquitetura em camadas, proposta durante o curso e enumerada no tópico `Diretórios`
+Rode o script para rodar localmente:
 
-3. Serão permitidas instalações de bibiliotecas de terceiros, fora as que já se encontram no `package.json`, dese que justificadas durante a apresentação do projeto
+```
+npm run local
+```
 
-4. Critérios gerais de aceite:
+Ou, para realizar o deploy:
+```
+serverless deploy
+```
 
-ORM/Banco de dados
-
-- Será obrigatório o uso da Mongoose para criação das Schemas e Models
-
-Rotas
-
-- É obrgatório o uso do Express
-
-Testes de Integração
-
-- O projeto deverá conter pelo menos um teste de Integração para cada Enpoint do
-  domínio associado a respectiva entidade, verificando ao menos o StatusCode da response
-  (Não será cobrado criação de ecossistema para teste de Integração)
-
-Teste Unitários
-
-- A camada de Repositórios deve conter pelo menos 1 teste unitário por Método/Função
-- A camada de serviços deverá conter 1 teste unitário para retornos de sucesso
-  e um teste para cada cenário de exceção
-- A camada de controllers deve possuir um teste unitário para cada captura de exceção
-  do serviço e um teste de resposta de sucesso
-- Funções de validação ou Função de mensagem de erro. Todas deverão possuir arquivos de teste unitário
-
-Testes
-
-- Pelo menos 80% de cobertura de Testes
-
-Documentação no Postman/Insomnia
-
-- Todos os endpoints deverão estar documentados e exportados em formato link JSON
-  do postman/insomnia
-- Deverá ser possível rodar a API local e verificar cada execução de request com
-  a documentação assim como os testes de integração com supertest/jest
-
-Retorno das Rotas
-
-- GetAll -> Toda a collection
-- GetById -> Apenas o objeto identificado
-- Update -> Apenas o editado (É uma opção fazer um endpoint para cada tipo de update)
-- Create -> Apenas o objeto criado
-
-Seeder das collections
-
-- Você deverá criar uma função de seeding do banco de dados
-
-Extras/Opcionais
-
-- Interfacear o Core da aplicação(Models, Repos, Services, Controller)
-  \*(pesquisas sobre inversão de controle/inversão de dependência)
-- Realizar o processo de DI com abstrações ao invés de detalhes
-  É a letra D do Solid
-
-5. Entidades e critérios de aceitação específico
-
-Resenhas (reviews)
-
-- Cada acervo de Resenhas deverá conter um:
-
-MODEL:
--> Título da Resenha de no máximo 24 caracteres (String) - Obrigatório - Único
-
--> Resenha: Texto de no máximo 200 caracteres (String[]) - Obrigatório
-arr[0] === Resenha v1
-arr[1] === Resenha v1.1
-arr[2] === Resenha v2.2
-
--> Data de criação: Formato de Data a sua escolha (new Date) - Obrigatório
-
--> Data de edição: Array com todas as datas de modificação (new Date[]) - Obrigatório
-arr[0] === new Date v1 (Data de criação)
-arr[1] === new Date v2 (Data de update1)
-arr[1] === new Date v2 (Data de update2)
-
--> Nota da Obra: Um número de 1 a 5 (Number) - Obrigatório
-
-- Essa API deverá ser capaz de interagir com uma lista(collection) de Resenhas do MONGODB
-
-- Deverá ser possível: Criar, Editar, Listar, Listar por ID
-
-- Não deverá ser possível apagar uma resenha
-
-- As edições devem ser acumuladas no Array de Resenhas e as datas no Array de datas,
-  dessa maneira elas não irão se sobreescrever e serão correspondentes por index
-
-- Os campos editaveis do Documento são: Resenhas(Apenas) e suas respectivas Datas
-
-Livros
-
-Cada Documento de Livro estará relacionado a um documento de Resenha
-
-- Os Livros devem possuir
-
-MODEL:
-->Título: Texto de no máximo 24 caracteres(Esse título é diferente do título
-da resenha em si) (String) - Obrigatório
-
--> Data de lançamento: Formato de Data a sua escolha (new Date) - Obrigatório
-(Data que o livro foi lançado)
-
--> Idiomas disponíveis: Texto de no máximo 18 caracteres por String (String[]) - Obrigatório
-
--> Status: Campo booleano que indica se o livro é comercializado/Existe (boolean) - Obrigatório
-False -> front end não irá consumir esse dado
-True -> front end irá consumir esse dado
-
--> Resenha: ID de uma Document de Resenha (ObjectId) - Opcional - Único
-Nem todo livro terá uma Resenha.
-
--> Autor: Texto de no máximo 24 caracteres (String) - Obrigatório - Único
-
-- Essa API deverá ser capaz de interagir com uma lista de Livros do MONGODB
-
-- Deverá ser possível: Criar, Editar, Listar, Listar por ID
-
-- Não deverá ser possível apagar um livro
-
-- Deverá possível alterar apenas o Status, os Idiomas disponíveis do livro e
-  o ID do Documento de Resenhas referentes ao Livro  
-  \*Alterar o Status de um livro por ID deverá ser um endpoint separado
-
-- A Listagem por ID deverá trazer todos dados da Resenha do respectivo livro caso
-  ela exista. Caso não exista retorna o Documento em sua estrutura normal
-  -> aqui deverá ser feito um aggregate/populate
-
-- Na funcionalidade de Listar, deverá ser possível fazer uma consulta com Query Params
-  por autor
+### Rodando os testes
+Para executar os testes, rode o script:
+```
+npm test
+```
+Para visualizar a cobertura de testes da aplicação, use o script:
+```
+npm run coverage
+```
+
+### Quantidade de testes realizados e cobertura da aplicação:
+![E2iF52f](https://user-images.githubusercontent.com/97243572/200716466-eee74c7e-781d-4d9a-8232-e8798d3e1af1.png)
+
+## Como usar os endpoints
+| Endpoint | Input |
+| ------------------------ | --------------------------------------------------------------------------------------------- |
+| GET /                 | Não é necessário input, retornará todas as postagens  |
+| GET /:id         | Necessário indicar id válido nos parâmetros da rota, retorna o post com o id selecionado.             |
+| POST /                  | Necessário informar JSON válido (exemplo: { "title": "sua publicação", "content": "conteúdo dessa publicação"}), retornará a postagem criada. Observação: a chave "content" não é obrigatória para criar postagem.                              |
+| PUT /:id         | Necessário indicar id válido nos parâmetros da rota e qual chave deseja alterar (title, content).             |
+| DELETE /:id         | Necessário indicar id válido nos parâmetros da rota, retorna post excluido.             |
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[coverage-screenshot]: https://i.imgur.com/E2iF52f.png
