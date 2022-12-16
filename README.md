@@ -85,8 +85,10 @@ npm run coverage
 ![Test integration project](https://user-images.githubusercontent.com/33781893/207997403-a2f3909f-0fdd-44ed-8e92-04d75b46d4a9.jpg)
 
 ## Como usar os endpoints
-| Entidade | Endpoint | Input |
+*Books*
+| Endpoint | Input |
 | ------------------------ | --------------------------------------------------------------------------------------------- |
-|book |GET /    | Não é necessário input, retornará todas os books  |
-|book |GET /:id | Necessário indicar id válido nos parâmetros da rota, retorna o book com o id selecionado.|
+| GET /                 | Não é necessário input, retornará todas as postagens  |
+| GET /:id         | Necessário indicar id válido nos parâmetros da rota, retorna o book com o id selecionado.              |
+     |
  
