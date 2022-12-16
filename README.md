@@ -68,17 +68,13 @@ Rode o script para rodar localmente:
 
 ```
 npm run local
-```
 
-Ou, para realizar o deploy:
-```
-serverless deploy
 ```
 
 ### Rodando os testes
 Para executar os testes, rode o script:
 ```
-npm test
+npm run test
 ```
 Para visualizar a cobertura de testes da aplicação, use o script:
 ```
