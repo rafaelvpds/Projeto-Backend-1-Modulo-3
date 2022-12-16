@@ -28,45 +28,25 @@ A estrutura de pastas do projeto é explicada a seguir:
 | Nome | Descrição |
 | ------------------------ | --------------------------------------------------------------------------------------------- |
 | **node_modules**         | Contém todas as dependências npm |
-
 | **src**       | Contém os diretórios src/db, src/books, src/reviews, src/test  e src/utils |
-
 | **src/db**    | Contém arquivo seeder.ts, para realizar um processo de seeding inicial
-
 | **src/books** | Contém todo o domínio de Posts: com seus respectivos controllers, models, repositories, services, factory e rotas.
-
 | **src/books/__mocks__**  | Contém todos os mocks da aplicação, para a realização dos testes.
-
 | **src/books/controllers** | Contém a classe BookController com os métodos: getAll, getById, create, update e updateStatus. Acompanha arquivo de testes de controller.
-
 | **src/books/factories** | Contém função bookFactory, responsável por instanciar repository, service e controller.    
-
 | **src/books/models**      | Contém o Schema para a model de review e cria Model da aplicação.|
-
 | **src/books/repository**  | . Contém a classe BookRepository: repositório com os métodos getAll, getById, create, update e updateStatus|   
-
 | **src/books/routes**  | É onde definimos os endpoints da entidade book|  
-
 | **src/books/services**     | Contém classe BookService: serviço com os métodos getAll, getById, create, update updateStatus.|
-
 | **src/books/utils** | Contém 1 arquivos: 1. book.body.validator função de validação do body.|
-
 | **src/reviews** | Contém todo o domínio do reviews: com seus respectivos controllers, models, repositories, services, factory e rotas.|
-
 | **src/reviews/__mocks__**  | Contém todos os mocks da aplicação, para a realização dos testes.|
-
 | **src/reviews/controllers** | Contém a classe ReviewController com os métodos: getAll, getById, create e update. Acompanha arquivo de testes de controller.|
-
 | **src/reviews/factories** | Contém função reviewFactory, responsável por instanciar repository, service e controller.    
-
 | **src/reviews/models**      | Contém o Schema para a model de reviews e cria Model da aplicação.|
-
 | **src/reviews/repository**  | Contém classe ReviewRepository: repositório com os métodos getAll, getById, create e update|         
-
 | **src/reviews/services**     | Contém classe ReviewService: serviço com os métodos getAll, getById, create e update.
-
 | **src/reviews/utils** | Contém 1 arquivos: 1. book.body.validator função de validação do body.|
-
 | **package.json** | Contém todas as dependências instaladas assim como os scripts da aplicação |     
 ## Pré-requisitos
 - É esperado que o <a href="https://nodejs.org/en/">Node.js</a> esteja instalado.
