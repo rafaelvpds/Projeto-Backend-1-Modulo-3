@@ -44,11 +44,12 @@ A estrutura de pastas do projeto é explicada a seguir:
 | **src/reviews/services**     | Contém classe ReviewService: serviço com os métodos getAll, getById, create e update.
 | **src/reviews/utils** | Contém 1 arquivos: 1. book.body.validator função de validação do body.|
 | **package.json** | Contém todas as dependências instaladas assim como os scripts da aplicação |     
+
 ## Pré-requisitos
 - É esperado que o <a href="https://nodejs.org/en/">Node.js</a> esteja instalado.
 - Na raiz no projeto, crie um arquivo <strong>.env</strong>, adicione sua string de conexão do MongoDB à chave MONGO, como demonstrado a seguir:
 ```
-MONGO=<sua-string-de-conexão>
+MONGO="sua-string-de-conexão"
 ```
 ### Instalação
 
@@ -64,13 +65,12 @@ Rode o script de seed:
 npm run seed
 ```
 
-Rode o script para rodar localmente:
+Rode o index para rodar localmente:
 
 ```
-npm run local
+npm run dev
 
 ```
-
 ### Rodando os testes
 Para executar os testes, rode o script:
 ```
@@ -84,4 +84,12 @@ npm run coverage
 ### Quantidade de testes realizados e cobertura da aplicação:
 ![Test integration project](https://user-images.githubusercontent.com/33781893/207997403-a2f3909f-0fdd-44ed-8e92-04d75b46d4a9.jpg)
 
-
+## Como usar os endpoints
+|Entidade|Endpoint | Input |
+| ------------------------ | --------------------------------------------------------------------------------------------- |
+|book |GET /    | Não é necessário input, retornará todas os books  |
+|book |GET /:id | Necessário indicar id válido nos parâmetros da rota, retorna o book com o id selecionado.             |
+|book |GET /?author ="nomeAuthor"| É necessário passar um parametro (string) para está realizando as buscas dos livro com base no autor passado pelo parametro.|
+|book| POST /   | Necessário informar JSON válido (exemplo: { "title": "sua publicação", "language": "idioma do livro", "statusBooks":(true or false), "author": "nome do autor do respectivo livro", "review": "resenha do respectivo livro"(objectId)}), retornará a o book criado. Observação: a chave "review" não é obrigatória para criar o book.|
+|book| PUT /:id/status | Necessário indicar id válido nos parâmetros da rota e qual chave deseja alterar ({"statusBooks":(true ou false)}).| 
+|book| PUT /:id | Necessário indicar id válido nos parâmetros da rota e qual chave deseja alterar (language ou review).|  
