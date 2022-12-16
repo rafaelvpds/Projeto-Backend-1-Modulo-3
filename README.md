@@ -89,6 +89,6 @@ npm run coverage
 | Endpoint | Input |
 | ------------------------ | --------------------------------------------------------------------------------------------- |
 | GET /                 | Não é necessário input, retornará todas as postagens  |
-| GET /:id         | Necessário indicar id válido nos parâmetros da rota, retorna o book com o id selecionado.              |
-     |
- 
+| GET /:id         | Necessário indicar id válido nos parâmetros da rota, retorna o post com o id selecionado.             |
+| GET /?author ="nomeAuthor"| É necessário passar um parametro (string) para está realizando as buscas dos livro com base no autor passado pelo parametro.                              |
+| POST /   | Necessário informar JSON válido (exemplo: { "title": "sua publicação", "language": "idioma do livro", "statusBooks":(true or false), "author": "nome do autor do respectivo livro", "review": "resenha do respectivo livro"(objectId)}), retornará a o book criado. Observação: a chave "review" não é obrigatória para criar o book.|
