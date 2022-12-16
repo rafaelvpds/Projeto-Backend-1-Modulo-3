@@ -14,13 +14,9 @@ O projeto foi realizado com a arquitetura em camada. Segue explicação da respo
 | Nome | Descrição |
 | ------------------------ | --------------------------------------------------------------------------------------------- |
 | **Model**| É o modelo do banco de dados criado com o ORM/Bbibilioteca |
-
 | **Repository**| Camada que recebe o Model, é onde fazemos as nossas queries|
-
 | **Serviço**| Camada de regra de negócio, recebe o Repository, é onde fica tratamento da maior partes dos erros.|
-
 | **Controllers**| Camada de entrada, recebe o Service é onde fica Req/Res, status code, erros de body, etc |
-
 | **Routes**| É onde definimos os endpoints e invocamos os controllers |
 ## Estrutura do projeto
 A estrutura de pastas do projeto é explicada a seguir:
