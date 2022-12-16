@@ -86,7 +86,7 @@ npm run coverage
 ```
 
 ### Quantidade de testes realizados e cobertura da aplicação:
-![E2iF52f](https://user-images.githubusercontent.com/97243572/200716466-eee74c7e-781d-4d9a-8232-e8798d3e1af1.png)
+![Test integration project](https://user-images.githubusercontent.com/33781893/207997403-a2f3909f-0fdd-44ed-8e92-04d75b46d4a9.jpg)
 
 ## Como usar os endpoints
 | Endpoint | Input |
