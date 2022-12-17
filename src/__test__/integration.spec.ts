@@ -13,18 +13,17 @@ app.use("/testeBook", routesBook);
 
 
 const reviewCreate = {
-  title: faker.lorem.words(3),
-  review: faker.lorem.paragraphs(3),
+  title: faker.lorem.words(1),
+  review: faker.lorem.paragraphs(1),
   note: 1,
 };
 const testReviewUpdate = {
   review: [
-    faker.lorem.paragraphs(3),
-    faker.lorem.paragraphs(3),
+    faker.lorem.paragraphs(1),
   ],
 };
 const bookCreate = {
-  title: faker.lorem.words(3),
+  title: faker.lorem.words(1),
   language: ["ingles, Portugues"],
   statusBooks: true,
   author: faker.name.firstName(),
@@ -61,7 +60,7 @@ describe("Reviews", () => {
     const response = await supertest(app).get(`/teste/${id}`);
     expect(response.status).toBe(200);
   });
-  it("should update user", async () => {
+  it("should update review", async () => {
     const getAll = await supertest(app).get("/teste");
     const lastReview = getAll.body[getAll.body.length - 1];
     const id = lastReview._id;
@@ -100,7 +99,7 @@ describe("Books", () => {
       .send(testBookUpdate);
     expect(response.status).toBe(200);
   });
-  it("should update book", async () => {
+  it("should update status book", async () => {
     const getAll = await supertest(app).get("/testeBook");
     const lastReview = getAll.body[getAll.body.length - 1];
     const id = lastReview._id;
