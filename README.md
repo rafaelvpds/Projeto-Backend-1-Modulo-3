@@ -102,6 +102,6 @@ npm run coverage
 | ------------------------ | --------------------------------------------------------------------------------------------- |
 | GET /                 | Não é necessário input, retornará todas as resenhas salvas no banco de dados  |
 | GET /:id         | Necessário indicar id válido nos parâmetros da rota, retorna review com o id selecionado.             |
-| POST /   | Necessário informar JSON válido (exemplo: { "title": "título da resenha", "review": "a resenha do livro", "note": "nota da resenha"}), retornará a o book criado. Observação: todas as chave são necessárias para a criação de uma resenha.|
+| POST /   | Necessário informar JSON válido (exemplo: { "title": "título da resenha", "review": "a resenha do livro", "note": "nota da resenha"}), retornará uma review. Observação: todas as chave são necessárias para a criação de uma resenha.|
 | PUT /:id| Necessário indicar id válido nos parâmetros da rota e a chave {"review":} para fazer a alteração.  |
 
