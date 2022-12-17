@@ -88,9 +88,17 @@ npm run coverage
 *Books*
 | Endpoint | Input |
 | ------------------------ | --------------------------------------------------------------------------------------------- |
-| GET /                 | Não é necessário input, retornará todas as postagens  |
-| GET /:id         | Necessário indicar id válido nos parâmetros da rota, retorna o post com o id selecionado.             |
+| GET /                 | Não é necessário input, retornará todas os books  |
+| GET /:id         | Necessário indicar id válido nos parâmetros da rota, retorna o book com o id selecionado.             |
 | GET /?author ="nomeAuthor"| É necessário passar um parametro (string) para está realizando as buscas dos livro com base no autor passado pelo parametro.                              |
-| POST /   | Necessário informar JSON válido (exemplo: { "title": "sua publicação", "language": "idioma do livro", "statusBooks":(true or false), "author": "nome do autor do respectivo livro", "review": "resenha do respectivo livro"(objectId)}), retornará a o book criado. Observação: a chave "review" não é obrigatória para criar o book.|
-| PUT /:id/status | Necessário indicar id válido nos parâmetros da rota e qual chave deseja alterar ({"statusBooks":(true ou false)}).  |
+| POST /   | Necessário informar JSON válido (exemplo: { "title": "título do livro", "language": "idioma do livro", "statusBooks": mostrara se o livro está disponível para venda, "author": "nome do autor do respectivo livro", "review": "resenha do respectivo livro"(objectId)}), retornará a o book criado. Observação: a chave "review" não é obrigatória para criar o book.|
+| PUT /:id/status | Necessário indicar id válido nos parâmetros da rota e qual chave deseja alterar ({"statusBooks":}).  |
 | PUT /:id | Necessário indicar id válido nos parâmetros da rota e qual chave deseja alterar (language ou review).             |
+*reviews*
+| Endpoint | Input |
+| ------------------------ | --------------------------------------------------------------------------------------------- |
+| GET /                 | Não é necessário input, retornará todas as resenhas salvas no banco de dados  |
+| GET /:id         | Necessário indicar id válido nos parâmetros da rota, retorna review com o id selecionado.             |
+| POST /   | Necessário informar JSON válido (exemplo: { "title": "título da resenha", "review": "a resenha do livro", "note": "nota da resenha"}), retornará a o book criado. Observação: todas as chave são necessárias para a criação de uma resenha.|
+| PUT /:id| Necessário indicar id válido nos parâmetros da rota e a chave {"review":} para fazer a alteração.  |
+
