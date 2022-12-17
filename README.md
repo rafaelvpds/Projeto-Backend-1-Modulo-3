@@ -94,7 +94,10 @@ npm run coverage
 | POST /   | Necessário informar JSON válido (exemplo: { "title": "título do livro", "language": "idioma do livro", "statusBooks": mostrara se o livro está disponível para venda, "author": "nome do autor do respectivo livro", "review": "resenha do respectivo livro"(objectId)}), retornará a o book criado. Observação: a chave "review" não é obrigatória para criar o book.|
 | PUT /:id/status | Necessário indicar id válido nos parâmetros da rota e qual chave deseja alterar ({"statusBooks":}).  |
 | PUT /:id | Necessário indicar id válido nos parâmetros da rota e qual chave deseja alterar (language ou review).             |
+
+
 *reviews*
+
 | Endpoint | Input |
 | ------------------------ | --------------------------------------------------------------------------------------------- |
 | GET /                 | Não é necessário input, retornará todas as resenhas salvas no banco de dados  |
